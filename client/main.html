@@ -1,0 +1,188 @@
+<head>
+  <title>task</title>
+</head>
+
+<body>
+  <div class="container">
+    {{> navBar}}
+    {{> mainBody}}
+    {{> footerBar}}
+  </div>
+</body>
+
+<template name="navBar">
+  <header>
+    <div class="collapse bg-dark" id="navbarHeader">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 col-md-7 py-4">
+            <h4 class="text-white">About</h4>
+            <p class="text-muted">literalMe is your go to place for book reviews and ratings of new and upcoming books as well as the classics.</p>
+          </div>
+          <div class="col-sm-4 offset-md-1 py-4">
+            <h4 class="text-white">You can...</h4>
+            <ul class="list-unstyled">
+              <li><a href="#" class="text-white">Follow on Twitter</a></li>
+              <li><a href="#" class="text-white">Like on Facebook</a></li>
+              <li><a href="#" class="text-white">Email us</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+      <div class="container d-flex justify-content-between">
+        <a href="#" class="navbar-brand d-flex align-items-center">         
+          <strong>Task</strong>
+         
+         
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+</template>
+
+<template name="start">
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">Task</h1>
+      <p class="lead text-muted">Here is where u will add your tasks.</p>
+      <p>
+        
+       
+          <div class="row">
+          <div class="col">
+
+          
+            
+            <!-- Button trigger modal -->
+             <div class="row ">
+                <div class="col">
+                  <button type="button" class="btn btn-primary">   
+                    {{> loginButtons}}
+                  </button>
+                </div>
+              </div>
+
+
+            <button type="button" class="btn btn-primary js-Show mt-4" data-toggle="modal" data-target="#Addtk">
+             Add Task
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="Addtk" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Please Add your task</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                        </button>
+                  </div>
+                <div class="modal-body">
+
+                 
+
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" >Your Name...</span>
+                      </div>
+                      <input type="text" class="form-control" id="Name" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+                      </div>
+                        <!-- title -->
+
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span  class="input-group-text"> task</span>
+                          </div>
+                          <textarea id="Task" class="form-control" aria-label="With textarea"></textarea>
+                          </div>
+                            <form>
+                                <input type="radio" aria-label="Radio button for following text input" id="p1" value="Pub">Public
+                                <input type="radio" aria-label="Radio button for following text input" id="p2" value="Pri">Private
+                            </form>
+                       
+
+                </div>
+               <div class="modal-footer">
+                 <button type="button" class="btn btn-secondary js-close" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary js-save">Save changes</button>
+                    </div>
+                  </div>
+                    </div>
+                  </div>
+          
+        
+          </div>
+        </div>
+
+        
+        
+       
+            
+       
+      </p>
+    </div>
+  </section>
+</template>
+
+<template name="mainBody">
+  <main role="main">
+    {{> start}}
+
+      <div class="album py-5 bg-light">
+      <div class="container">
+        <div class="row">
+        {{> myTask}}
+
+        </div> <!-- /row for all cards -->
+      </div>
+    </div>
+
+  </main>
+</template>
+
+<template name="footerBar">
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-right">
+        <a href="#">Back to top</a>
+      </p>
+      <p>&copy; WeTookYourDesignsInc</p>      
+    </div>
+  </footer>
+</template>
+
+<template name="myTask">
+  
+   {{#each allTask}}  
+
+       
+
+
+        <div class="card" style="width: 20rem;">
+          <li class="{{checked}}">
+            <div class="card-body " id={{_id}}>
+              <input type="checkbox" {{checked}}>
+              
+            <h5 class="card-title" >@{{Name}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Task to be completed</h6>
+            <p class="card-text">
+              <input type="text" value="{{Task}}" name="tskname" style="font-size: 1.5rem;" disabled> 
+            </p>
+            <i class="fa fa-trash icolor js-delete"></i>
+          </div>
+          </li>
+        
+        </div>
+
+
+  
+    
+     
+     {{/each}} 
+    
+ </template>
